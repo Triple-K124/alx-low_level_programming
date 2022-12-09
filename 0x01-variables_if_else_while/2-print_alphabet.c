@@ -2,7 +2,7 @@
 #include <stdlib.h>
 /**
  * main - Entry block
- * Description: Print characters in lower case
+ * Return: 0 if successful
  */
 int main(void)
 {

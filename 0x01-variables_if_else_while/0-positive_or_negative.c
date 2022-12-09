@@ -3,10 +3,12 @@
 #include <time.h>
 
 /**
- * main - prints if the number is positive, negative or 0
+ * main - Entry
  * Return: Always 0
  */
+
 int main(void)
+
 {
 
 		int n;
@@ -24,10 +26,10 @@ int main(void)
 				{
 				printf("%d is zero\n", n);
 				}
-				else(n < 0)
+				(n < 0)
 				{
 					printf("%d is negative\n" n);
-				}
+				}	
 				return (0);
 
 }

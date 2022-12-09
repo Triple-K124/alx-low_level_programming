@@ -22,6 +22,17 @@ int main(void)
 
 					/* your code goes there */
 
-					return (0);
+			if (0 < n)
+			{
+			printf("%d", n " is positive\n");
+			} else if(0 == n)
+			{
+			printf("%d", n " is zero\n")
+			} else if(0 > n)
+			{
+			printf("%d", n " is negative\n")
+			}
+				
+				return (0);
 
 }

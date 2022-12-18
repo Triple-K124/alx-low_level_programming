@@ -12,13 +12,12 @@ int main(void)
 
 	for (c = 0; c <= 9; c++)
 	{
-		if (c == 9)
-		putchar('\n');
-		else
 		putchar(c + 48);
+		if (c == 9)
+			putchar('\n');
+		else
 		putchar(',');
 		putchar(' ');
-		
 	}
 
 	return (0);

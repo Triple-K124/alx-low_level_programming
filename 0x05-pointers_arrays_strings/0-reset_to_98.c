@@ -8,7 +8,7 @@
  * Return: n
  */
 
-vod rest_to_98(int *n);
+void rest_to_98(int *n);
 
 void rest_to_98(int *n)
 {

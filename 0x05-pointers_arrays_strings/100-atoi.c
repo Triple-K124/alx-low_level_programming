@@ -12,7 +12,7 @@ int _atoi(char *s)
 	int n = 0;
 	int signo = 1;
 
-	while ((s[i] < '0' || s[i] > '9') && s[i] !=0)
+	while ((s[i] < '0' || s[i] > '9') && s[i] != 0)
 	{
 		if (s[i] == '-')
 			signo *= -1;

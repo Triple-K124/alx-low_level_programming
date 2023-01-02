@@ -1,4 +1,4 @@
-/**
+/*
  * File: 0-memset.c
  * Auth: not
  */
@@ -15,7 +15,7 @@
  *
  * Return: A pointer to the filled memory area @s
  *
- **/
+ */
 
 void *_memset(void *s, int c, size_t n)
 {

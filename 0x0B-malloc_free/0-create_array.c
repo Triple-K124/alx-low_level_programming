@@ -1,32 +1,62 @@
-#include "main.h"
-
-#include <stdio.h>
-
 #include <stdlib.h>
 
+#include "main.h"
+
 /**
- *main - check the code for ALX School students.
- *Return: Always 0.
+ *create_array - creates an array of chars dynamically
+ *@size: size of the array
+ *@c: the string
+ *Return: 0 means success except defined otherwise
  */
 
-int main(void)
+char *create_array(unsigned int size, char c)
 
 {
-	char *s;
 
-	s = _strdup("ALX SE");
+	char *buffer;
 
-	if (s == NULL)
+	unsigned int position;
+
+
+	if (size == 0)
+
 	{
 
-		printf("failed to allocate memory\n");
-
-		return (1);
+		return (NULL);
 
 	}
-		printf("%s\n", s);
 
-		free(s);
+	/*Define values with malloc*/
 
-		return (0);
+	buffer = (char *) malloc(size * sizeof(c));
+
+
+	if (buffer == 0)
+
+	{
+
+		return (NULL);
+
+	}
+
+	else
+
+	{
+
+		position = 0;
+
+		while (position < size) /*While for array*/
+
+		{
+			*(buffer + position) = c;
+
+			position++;
+
+		}
+
+
+	return (buffer);
+
+	}
+
 }

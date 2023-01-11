@@ -13,22 +13,20 @@ int main(int argc, char **argv)
 
 {
 
-		int num;
+	int num;
 
+	for (num = 0; num < argc;)
 
+	{
 
-			for (num = 0; num < argc;)
+		num++;
 
-					{
+		(*argv)++;
 
-								num++;
+	}
 
-										(*argv)++;
+	printf("%i\n", num - 1);
 
-											}
-
-				printf("%i\n", num - 1);
-
-					return (0);
+	return (0);
 
 }

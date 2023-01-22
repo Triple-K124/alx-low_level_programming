@@ -24,7 +24,6 @@ void print_all(const char * const format, ...)
 				break;
 			} j++;
 		}
-
 		switch (format[i])
 		{
 			case 'c':
@@ -43,11 +42,9 @@ void print_all(const char * const format, ...)
 					printf("(nil)");
 					break;
 				}
-
 				printf("%s", str);
 				break;
 		} i++;
 	}
-
 	printf("\n"), va_end(valist);
 }

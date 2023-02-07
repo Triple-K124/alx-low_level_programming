@@ -25,7 +25,7 @@ int main(int argc, char *argv[])
 		exit(98);
 	}
 	fd_w = open(argv[2], O_CREAT | O_WRONLY | O_TRUNC, 0664);
-	while ((x = read(fd_r, buf, BUFFSIZ)) > 0)
+	while ((x = read(fd_r, buf, BUFSIZ)) > 0)
 	{
 		if (fd_w < 0 || write(fd_w, buf, x) != x)
 		{

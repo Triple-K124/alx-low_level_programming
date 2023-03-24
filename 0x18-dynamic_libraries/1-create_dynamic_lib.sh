@@ -1,7 +1,10 @@
 #!/bin/bash
 
 # Compile all .c files into object files
-gcc -fpic -c *.c -o *.o
+for file in *.c
+do
+    gcc -Wall -Werror -fpic -c "$file"
+done
 
 # Create the dynamic library
 gcc -shared -o liball.so *.o
@@ -9,4 +12,3 @@ gcc -shared -o liball.so *.o
 # Cleanup: remove the object files
 rm *.o
 
-sudo ldconfig

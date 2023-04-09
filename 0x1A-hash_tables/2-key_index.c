@@ -1,4 +1,4 @@
-#include "main.h"
+#include "hash_tables.h"
 /**
  * size - size of the Table`
  * @key: key that holds the the value

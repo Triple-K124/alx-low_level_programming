@@ -1,51 +1,118 @@
-#include "hash_tables.h"
 #include <stddef.h>
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
-int hash_table_set(hash_table_t *ht, const char *key, const char *value)
+#include "hash_tables.h"
 
+/**
+ * key_exists - checks if the key really exists.
+ * @ht - stores the hash table.
+ * @key - the key of the string.
+ * @value - the value that will be stored in the string
+ * k_index - stores the hash value
+ * check - checks if the key is already there.
+ */
+
+int key_exists(hash_table_t *ht, const char *key, const char *value)
 {
-	hash_node_t *check;
 	unsigned long int k_index;
-	hash_node_t* new_node;
-	if (!ht || !key)
-	{
-		/* Hash table or key doesn't exist */
-		fprintf(stderr, "Hash Table or key doesn't exist");
-		return (0);
-	}
+	hash_node_t *check;
 
-	k_index =  key_index((const unsigned char *) key, ht->size);
-
-	/* Check if the key already exists in the hash table */
+	k_index = key_index((const unsigned char *) key, ht->size);
 	check = ht->array[k_index];
-	while(check)
+	while (check)
 	{
 		if (strcmp(check->key, key) == 0)
 		{
-			/* key already exists, update value */
+			/* Key already exists, update value */
 			free(check->value);
 			check->value = strdup(value);
 			return (1);
 		}
 		check = check->next;
 	}
+	return (0);
+}
+/**
+ * update_value - updates the value of the key.
+ * @ht - stores the hash table.
+ * @key - the key of the string.
+ * @value - the value that will be stored in the string
+ * k_index - stores the hash value
+ * check - checks if the key is already there.
+ *
+ * return - Returns 0 if successful
+ */
 
-	/* Allocate memory for a new node */
+int update_value(hash_table_t *ht, const char *key, const char *value)
+{
+	hash_node_t *check;
+
+	check = ht->array[key_index((const unsigned char *) key, ht->size)];
+	while (check)
+	{
+		if (strcmp(check->key, key) == 0)
+		{
+			free(check->value);
+			check->value = strdup(value);
+			return (1);
+		}
+		check = check->next;
+	}
+	return (0);
+}
+
+/**
+ * create_node - creates new node.
+ * @key - the key of the string.
+ * @value - the value that will be stored in the string
+ *
+ * Return - Return 0 if successful 
+ */
+
+hash_node_t *create_node(const char *key, const char *value)
+{
+	hash_node_t *new_node;
+
 	new_node = malloc(sizeof(hash_node_t));
 	if (!new_node)
 	{
 		fprintf(stderr, "New memory was not allocated");
+		return NULL;
+	}
+	new_node->key = strdup(key);
+	new_node->value = strdup(value);
+	new_node->next = NULL;
+	return new_node;
+}
+
+int hash_table_set(hash_table_t *ht, const char *key, const char *value)
+{
+	
+	hash_node_t *new_node;
+	unsigned long int k_index;
+	if (!ht || !key)
+	{
+		fprintf(stderr, "Hash table or key doesn't exist");
 		return (0);
 	}
 
-	/* Initialize the new node with the key and value */
-	new_node->key = strdup(key);
-	new_node->value = strdup(value);
+	if (key_exists(ht, key, value))
+	{
+		update_value(ht, key, value);
+		return (1);
+	}
+
+	new_node = create_node(key, value);
+	if (!new_node)
+	{
+		return (0);
+	}
+
+	k_index = key_index((const unsigned char *) key, ht->size);
 	new_node->next = ht->array[k_index];
 	ht->array[k_index] = new_node;
 
-
 	return (1);
 }
+

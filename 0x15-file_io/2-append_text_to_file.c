@@ -8,6 +8,8 @@
  * append_text_to_file - Appends a text to the file
  * @filename: Name of file we want to append text to
  * @text_content: The text we want to append to the file
+ *
+ * Return: return 1 is successful and -1 if unsuccessful
  */
 
 int append_text_to_file(const char *filename, char *text_content)
@@ -37,9 +39,7 @@ int append_text_to_file(const char *filename, char *text_content)
 			perror("write");
 			exit(EXIT_FAILURE);
 		}
-	
-	close (fd);
-
+	close(fd);
 	return (1);
 	}
 

@@ -21,7 +21,8 @@ int create_file(const char *filename, char *text_content)
 
 	if (filename == NULL)
 		return (-1);
-	fd = open(filename, O_CREAT | O_TRUNC | S_IRUSR | S_IWUSR);
+
+	fd = open(filename, O_CREAT | O_RDWR | O_TRUNC | 600);
 
 	if (fd == -1)
 	{
@@ -29,14 +30,8 @@ int create_file(const char *filename, char *text_content)
 		exit(EXIT_FAILURE);
 	}
 
-	if (chmod(filename, S_IRUSR | S_IWUSR) == -1)
-	{
-		perror("chmod");
-		exit(EXIT_FAILURE);
-	}
-
 	if (text_content != NULL)
-	{
+{
 		len_text = strlen(text_content);
 
 		writer = write(fd, text_content, len_text);

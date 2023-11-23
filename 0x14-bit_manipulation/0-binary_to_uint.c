@@ -9,18 +9,18 @@
 unsigned int binary_to_uint(const char *b)
 {
 	unsigned int answer = 0;
-	int i = 0;
-	
+	int counter = 0;
+
 	if (b == NULL)
 		return (0);
 
-	while (b[i] != '\0')
+	while (b[counter] != '\0')
 	{
-		if (b[i] == '0')
+		if (b[counter] == '0')
 		{
 			answer = answer * 2;
 		}
-		else if (b[i] == '1')
+		else if (b[counter] == '1')
 		{
 			answer = answer * 2 + 1;
 		}
@@ -28,7 +28,7 @@ unsigned int binary_to_uint(const char *b)
 		{
 			return (0); /* Invalid character found */
 		}
-		i++;
+		counter++;
 	}
 
 	return (answer);

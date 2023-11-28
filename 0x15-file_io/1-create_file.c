@@ -36,18 +36,17 @@ int create_file(const char *filename, char *text_content)
 	if (fd == -1)
 	{
 		perror("open");
-		close(fd);
-		exit(EXIT_FAILURE);
+		exit(-1);
 	}
 
 
 		writer = write(fd, text_content, len_text);
 
-		if (writer == -1)
+		if (writer < 0)
 		{
 			perror("Write");
-			close(writer);
-			exit(EXIT_FAILURE);
+			close(fd);
+			exit(-1);
 		}
 	}
 

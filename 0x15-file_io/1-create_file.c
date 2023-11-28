@@ -23,8 +23,6 @@ int create_file(const char *filename, char *text_content)
 	if (filename == NULL)
 		return (-1);
 
-	if (text_content == NULL)
-		text_content = "";
 
 	if (text_content != NULL)
 	{
@@ -38,6 +36,7 @@ int create_file(const char *filename, char *text_content)
 	if (fd == -1)
 	{
 		perror("open");
+		close(fd);
 		exit(EXIT_FAILURE);
 	}
 
@@ -47,11 +46,12 @@ int create_file(const char *filename, char *text_content)
 		if (writer == -1)
 		{
 			perror("Write");
+			close(writer);
 			exit(EXIT_FAILURE);
 		}
 	}
 
-		close(fd);
+	close(fd);
 
-		return (1);
+	return (1);
 }
